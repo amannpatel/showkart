@@ -27,3 +27,18 @@ replay_pid*
 _bmad
 _bmad-output
 .agents
+
+# Local env — never commit secrets
+.env
+.env.local
+
+# Build output
+target/
+**/target/
+dist/
+node_modules/
+
+# IDE
+.idea/
+*.iml
+.vscode/
