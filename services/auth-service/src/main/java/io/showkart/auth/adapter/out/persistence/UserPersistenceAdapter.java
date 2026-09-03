@@ -5,6 +5,7 @@ import io.showkart.auth.domain.UserAccount;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 class UserPersistenceAdapter implements UserRepositoryPort {
@@ -18,6 +19,11 @@ class UserPersistenceAdapter implements UserRepositoryPort {
     @Override
     public Optional<UserAccount> findByEmailIgnoreCase(String email) {
         return repository.findByEmail(email).map(UserPersistenceAdapter::toDomain);
+    }
+
+    @Override
+    public Optional<UserAccount> findById(UUID userId) {
+        return repository.findById(userId).map(UserPersistenceAdapter::toDomain);
     }
 
     @Override

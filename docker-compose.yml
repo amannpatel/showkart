@@ -147,6 +147,9 @@ services:
       AUTH_DB_URL: jdbc:postgresql://postgres:5432/auth_db
       POSTGRES_USER: ${POSTGRES_USER:-showkart}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-in-local}
+      AUTH_JWT_SECRET: ${AUTH_JWT_SECRET:?AUTH_JWT_SECRET must be set (>=32 bytes) in .env}
+      AUTH_JWT_ACCESS_TTL_SECONDS: ${AUTH_JWT_ACCESS_TTL_SECONDS:-3600}
+      AUTH_REFRESH_TTL_SECONDS: ${AUTH_REFRESH_TTL_SECONDS:-604800}
     depends_on:
       postgres:
         condition: service_healthy

@@ -29,7 +29,21 @@ class HexagonalArchitectureTest {
                         "org.springframework..",
                         "jakarta..",
                         "com.fasterxml..",
-                        "org.hibernate.."
+                        "org.hibernate..",
+                        "io.jsonwebtoken.."
+                )
+                .check(classesUnderTest);
+    }
+
+    @Test
+    void application_stays_off_infrastructure_libraries() {
+        noClasses()
+                .that().resideInAPackage("..application..")
+                .should().dependOnClassesThat().resideInAnyPackage(
+                        "io.jsonwebtoken..",
+                        "org.springframework.security..",
+                        "org.hibernate..",
+                        "jakarta.persistence.."
                 )
                 .check(classesUnderTest);
     }
